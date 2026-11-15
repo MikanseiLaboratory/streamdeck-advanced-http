@@ -35,13 +35,13 @@
     }
   ],
   "SDKVersion": 3,
-  "Author": "Shugo Kawamura", 
+  "Author": "MikanseiLaboratory", 
   "CodePath": "http_client.exe", 
   "CodePathMac" :"http_client", 
-  "Description": "Advanced HTTP Client", 
-  "Name": "Advanced HTTP Client [FlowingSPDG]", 
+  "Description": "HTTP Client", 
+  "Name": "HTTP Client [MikanseiLaboratory]", 
   "Icon": "images/icon", 
-  "URL": "https://github.com/FlowingSPDG/streamdeck-advanced-http", 
+  "URL": "https://github.com/MikanseiLaboratory/streamdeck-advanced-http", 
   "Version": "1.0.0",
   "OS": [
     {
@@ -56,6 +56,6 @@
   "Software": {
     "MinimumVersion" : "6.9"
   },
-  "Category": "Advanced HTTP Client [FlowingSPDG]",
+  "Category": "HTTP Client [MikanseiLaboratory]",
   "CategoryIcon": "images/icon"
 }
