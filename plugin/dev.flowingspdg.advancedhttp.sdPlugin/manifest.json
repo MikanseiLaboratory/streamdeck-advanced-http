@@ -4,7 +4,7 @@
   "Name": "HTTP Client [MikanseiLaboratory]",
   "Author": "MikanseiLaboratory",
   "Description": "Send HTTP requests from Stream Deck keys and dials.",
-  "Version": "2.0.0.0",
+  "Version": "1.0.0.0",
   "Icon": "images/icon",
   "Category": "HTTP Client [MikanseiLaboratory]",
   "CategoryIcon": "images/icon",

@@ -4,7 +4,7 @@ version = 4
 
 [[package]]
 name = "advanced-http-client"
-version = "2.0.0"
+version = "1.0.0"
 dependencies = [
  "futures",
  "reqwest",
@@ -14,7 +14,7 @@ dependencies = [
 
 [[package]]
 name = "advanced-http-plugin"
-version = "2.0.0"
+version = "1.0.0"
 dependencies = [
  "advanced-http-client",
  "anyhow",

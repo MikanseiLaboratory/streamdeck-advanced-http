@@ -17,9 +17,9 @@ HTTPメソッドごとにアクションを分割しています。
 - キー用: **HTTP GET / POST / PUT / PATCH / DELETE / HEAD / OPTIONS / QUERY**
 - ダイヤル用: **HTTP GET (Dial)** など、各メソッドの `(Dial)` アクション
 
-キーは押下時（Press）と解放時（Release）、ダイヤルは左右の回転・押し込み・解放・タッチに別々のURLを設定できます。BODYはGET / HEAD / OPTIONS以外で表示されます。
+キーは押下時（Press）と解放時（Release）、ダイヤルは左右の回転・押し込み・解放・タッチに別々のURLを設定できます。新しいメソッド別アクションでは、BODYはGET / HEAD / OPTIONS以外で表示されます。旧アクション（Any Method）はv1と同じく常にBODYを表示します。
 
-既存の **HTTP REQUEST** / **HTTP REQUEST (DIAL)** アクションは「Any Method」として残してあります。v1で作成したキーと設定はそのまま動作します（`method` / `url_press` / `url_left` などの設定キーは変更していません）。
+既存の **HTTP REQUEST** / **HTTP REQUEST (DIAL)** アクションは「Any Method」として残してあります。v1で作成したキーと設定はそのまま動作します（`method` / `url_press` / `url_left` などの設定キーは変更していません）。新規に追加する場合は、メソッド別アクションを使ってください。
 
 ### 認証
 
@@ -38,7 +38,7 @@ cd pi && npm ci && npm run build
 
 `PACK=1 ./publish.sh` で `.streamDeckPlugin` を作成できます。Windowsでは `publish.ps1` を使います。
 
-タグ `v2.0.0.0`（alpha/beta/rcは `-alpha` など）をpushすると、GitHub ActionsがWindows/macOS向けにビルドしてGitHub Releaseを作成します。タグの4桁バージョンは `manifest.json` の `Version` と一致している必要があります。
+タグ `v1.0.0.0`（alpha/beta/rcは `-alpha` など）をpushすると、GitHub ActionsがWindows/macOS向けにビルドしてGitHub Releaseを作成します。タグの4桁バージョンは `manifest.json` の `Version` と一致している必要があります。
 
 ## ライセンス
 

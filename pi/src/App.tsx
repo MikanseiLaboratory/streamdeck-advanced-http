@@ -43,7 +43,9 @@ export function App() {
     ? settings.method?.trim().toUpperCase() || "GET"
     : meta.method ?? "GET";
   const isDial = meta.controller === "encoder";
-  const showBody = !NO_BODY_METHODS.includes(method);
+  // Legacy "Any Method" actions keep the whole v1 form; only the method value
+  // changes. New per-method actions hide BODY for bodiless methods.
+  const showBody = meta.legacy || !NO_BODY_METHODS.includes(method);
 
   const update = (patch: Partial<Settings>) => {
     setSettings((previous) => ({ ...previous, ...patch }));
