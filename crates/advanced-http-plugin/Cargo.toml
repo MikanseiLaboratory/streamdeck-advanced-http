@@ -1,0 +1,38 @@
+[package]
+name = "advanced-http-plugin"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "Advanced HTTP Client Stream Deck plugin"
+publish = false
+
+[lib]
+name = "advanced_http_plugin"
+path = "src/lib.rs"
+
+[[bin]]
+name = "plugin"
+path = "src/main.rs"
+
+[[bin]]
+name = "typegen"
+path = "src/bin/typegen.rs"
+
+[dependencies]
+advanced-http-client = { path = "../advanced-http-client" }
+anyhow.workspace = true
+futures.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+streamdeck-plugin = { git = "https://github.com/MikanseiLaboratory/StreamDeckPluginRust", rev = "943e9b7e63a898de3e45012a2730d2c4ae34327a", features = ["macros", "typegen"] }
+tokio.workspace = true
+tracing.workspace = true
+ts-rs.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true
+
+[lints]
+workspace = true
