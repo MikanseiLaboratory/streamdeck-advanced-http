@@ -1,0 +1,19 @@
+name: zz reusable-call test
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: false
+        default: v0.4.0
+jobs:
+  fake-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "pretend the release was created here"
+  announce-discord:
+    needs: [fake-publish]
+    uses: ./.github/workflows/discord-notify.yml
+    with:
+      tag: ${{ github.event.inputs.tag || github.ref_name }}
+    secrets:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
