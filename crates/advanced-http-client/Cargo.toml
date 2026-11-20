@@ -1,0 +1,24 @@
+[package]
+name = "advanced-http-client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "HTTP request execution for the Advanced HTTP Stream Deck plugin"
+publish = false
+
+[lib]
+name = "advanced_http_client"
+path = "src/lib.rs"
+
+[dependencies]
+futures.workspace = true
+reqwest.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true
+
+[lints]
+workspace = true

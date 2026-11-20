@@ -1,0 +1,119 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+  PLUGIN_ID: dev.flowingspdg.advancedhttp
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.91.1
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: Install TLS build dependencies
+        run: sudo apt-get update && sudo apt-get install -y libssl-dev pkg-config
+      - name: Format
+        run: cargo fmt --all -- --check
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Test
+        run: cargo test --workspace --locked
+      - name: Generate Property Inspector contracts
+        run: cargo run --locked -p advanced-http-plugin --bin typegen
+      - name: Check generated files are current
+        run: git diff --exit-code -- pi/src/generated
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: pi/package-lock.json
+      - name: Build Property Inspector
+        working-directory: pi
+        run: npm ci && npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: property-inspector
+          path: plugin/dev.flowingspdg.advancedhttp.sdPlugin/propertyinspector
+
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            artifact: win-x64
+            binary: plugin.exe
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            artifact: osx-arm64
+            binary: plugin
+          - os: macos-latest
+            target: x86_64-apple-darwin
+            artifact: osx-x64
+            binary: plugin
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.91.1
+        with:
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2
+      - name: Build release binary
+        run: cargo build -p advanced-http-plugin --release --bin plugin --locked --target ${{ matrix.target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: target/${{ matrix.target }}/release/${{ matrix.binary }}
+
+  package:
+    needs: [test, build]
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/download-artifact@v4
+        with:
+          path: build
+      - name: Assemble plugin
+        run: |
+          set -euo pipefail
+          plugin="plugin/${PLUGIN_ID}.sdPlugin"
+          mkdir -p "$plugin/bin" "$plugin/propertyinspector"
+          cp "build/win-x64/plugin.exe" "$plugin/bin/plugin.exe"
+          lipo -create \
+            "build/osx-arm64/plugin" \
+            "build/osx-x64/plugin" \
+            -output "$plugin/bin/plugin"
+          chmod +x "$plugin/bin/plugin"
+          cp -R build/property-inspector/. "$plugin/propertyinspector/"
+      - name: Install Stream Deck CLI
+        run: npm install -g @elgato/cli@1.9.0
+      - name: Validate plugin
+        run: streamdeck validate "plugin/${PLUGIN_ID}.sdPlugin"
+      - name: Pack plugin
+        run: |
+          set -euo pipefail
+          version="$(jq -r .Version "plugin/${PLUGIN_ID}.sdPlugin/manifest.json")"
+          mkdir -p dist
+          streamdeck pack \
+            --no-update-check \
+            --force \
+            --output dist \
+            --version "$version" \
+            "plugin/${PLUGIN_ID}.sdPlugin"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: streamDeckPlugin
+          path: dist/*.streamDeckPlugin

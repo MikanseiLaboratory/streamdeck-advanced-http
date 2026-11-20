@@ -1,0 +1,383 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "UUID": "dev.flowingspdg.advancedhttp",
+  "Name": "HTTP Client [MikanseiLaboratory]",
+  "Author": "MikanseiLaboratory",
+  "Description": "Send HTTP requests from Stream Deck keys and dials.",
+  "Version": "1.0.0.0",
+  "Icon": "images/icon",
+  "Category": "HTTP Client [MikanseiLaboratory]",
+  "CategoryIcon": "images/icon",
+  "CodePath": "bin/plugin",
+  "CodePathWin": "bin/plugin.exe",
+  "CodePathMac": "bin/plugin",
+  "PropertyInspectorPath": "propertyinspector/index.html",
+  "SDKVersion": 3,
+  "URL": "https://github.com/MikanseiLaboratory/streamdeck-advanced-http",
+  "Software": {
+    "MinimumVersion": "6.9"
+  },
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    },
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.15"
+    }
+  ],
+  "Actions": [
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.get",
+      "Name": "HTTP GET",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP GET request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.get",
+      "Name": "HTTP GET (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP GET request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.post",
+      "Name": "HTTP POST",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP POST request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.post",
+      "Name": "HTTP POST (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP POST request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.put",
+      "Name": "HTTP PUT",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP PUT request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.put",
+      "Name": "HTTP PUT (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP PUT request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.patch",
+      "Name": "HTTP PATCH",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP PATCH request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.patch",
+      "Name": "HTTP PATCH (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP PATCH request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.delete",
+      "Name": "HTTP DELETE",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP DELETE request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.delete",
+      "Name": "HTTP DELETE (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP DELETE request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.head",
+      "Name": "HTTP HEAD",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP HEAD request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.head",
+      "Name": "HTTP HEAD (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP HEAD request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.options",
+      "Name": "HTTP OPTIONS",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP OPTIONS request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.options",
+      "Name": "HTTP OPTIONS (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP OPTIONS request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.query",
+      "Name": "HTTP QUERY",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP QUERY request when the key is pressed or released.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial.query",
+      "Name": "HTTP QUERY (Dial)",
+      "Icon": "images/icon",
+      "Tooltip": "Send an HTTP QUERY request when the dial turns, is pressed, or is tapped.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.perform",
+      "Name": "HTTP REQUEST (Any Method)",
+      "Icon": "images/icon",
+      "Tooltip": "Legacy action: choose the method in the Property Inspector. Existing keys keep working.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": true,
+      "States": [
+        {
+          "Image": "images/icon",
+          "TitleAlignment": "middle",
+          "FontSize": 24
+        }
+      ]
+    },
+    {
+      "UUID": "dev.flowingspdg.advancedhttp.dial",
+      "Name": "HTTP REQUEST (Dial, Any Method)",
+      "Icon": "images/icon",
+      "Tooltip": "Legacy dial action: choose the method in the Property Inspector. Existing dials keep working.",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "layout": "$B1",
+        "TriggerDescription": {
+          "Rotate": "Send request",
+          "Push": "Send request",
+          "Touch": "Send request"
+        }
+      },
+      "States": [
+        {
+          "Image": "images/icon"
+        }
+      ]
+    }
+  ]
+}
